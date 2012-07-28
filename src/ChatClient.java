@@ -1,13 +1,15 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
+import java.net.*;
 
 public class ChatClient extends Frame {
 	
-	TextField tfTxt = new TextField();
-	TextArea taContent = new TextArea();
+	    TextField tfTxt = new TextField();
+	    TextArea taContent = new TextArea();
 	
 	public static void main(String[] args) {
-	new ChatClient().launchFrame();
+	    new ChatClient().launchFrame();
 	
 	}
     public void launchFrame(){
@@ -25,8 +27,22 @@ public class ChatClient extends Frame {
 			System.exit(0);}});
 	   tfTxt.addActionListener(new TFlistener());
 	   setVisible(true);
-			
+			connect();
 		}
+    
+    public void connect(){
+    	try {
+			Socket s =new Socket("127.0.0.1",8888);
+System.out.println("connected");			
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+    
     private class TFlistener implements ActionListener {
 
 		@Override
