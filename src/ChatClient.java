@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.event.*;
 
 public class ChatClient extends Frame {
 	
@@ -16,6 +17,15 @@ public class ChatClient extends Frame {
 	   add(tpTxt,BorderLayout.SOUTH);
 	   add(taContent,BorderLayout.NORTH);
 	   pack();
+	   this.addWindowListener(new WindowAdapter() {
+
+		@Override
+		public void windowClosing(WindowEvent e) {
+			// TODO Auto-generated method stub
+			System.exit(0);
+		}
+		   
+	});
 	   setVisible(true);
 			
 		}
